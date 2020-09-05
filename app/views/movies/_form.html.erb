@@ -1,0 +1,58 @@
+<div class="w3-card w3-col l8 s6 w3-light-gray">
+  <div class="m-5">
+<%= form_with(model: movie, local: true) do |form| %>
+  <% if movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+        <% movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class:"form-control mb-4" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class:"form-control mb-4" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :movie_length %>
+    <%= form.text_field :movie_length, class:"form-control mb-4" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :director %>
+    <%= form.text_field :director, class:"form-control mb-4" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.text_field :rating, class:"form-control mb-4" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :actors %>
+    <%= form.text_field :actors, class:"form-control mb-4" %>
+  </div>
+
+  <div class="field mb-4">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <%= hidden_field_tag 'movie[user_id]', current_user.id %>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-success" %>
+  </div>
+<% end %>
+</div>
+</div>

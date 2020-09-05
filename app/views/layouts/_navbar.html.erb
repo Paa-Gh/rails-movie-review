@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container my-5">
+  <a class="navbar-brand text-white" href="<%= root_path %>">Movie Reviews</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= new_movie_path %>">New Movie <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <p class="navbar-text float-right m-0 pl-3">
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>. |
+    <%= link_to 'Account', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> |
+    <%= image_tag current_user.gravatar_url, :class => "gravatar" %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
+  </p>
+  </div>
+</nav>
